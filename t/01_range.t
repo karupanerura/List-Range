@@ -49,5 +49,11 @@ is_deeply $default->ranges, [$default], 'ranges should be the array ref includes
 is_deeply [$one_to_ten->all], [1..10], 'one to ten velues';
 is_deeply [@$one_to_ten], [1..10], 'one to ten velues (by overload)';
 
+my ($line, $file) = @_;
+eval { $default->all }; ($line, $file) = (__LINE__, __FILE__);
+like $@, qr/^lower is infinit at $file line $line/, "lower is infinit at $file line $line";
+eval { List::Range->new(lower => 0)->all }; ($line, $file) = (__LINE__, __FILE__);
+like $@, qr/^upper is infinit at $file line $line/, "upper is infinit at $file line $line";
+
 done_testing;
 

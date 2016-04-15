@@ -53,8 +53,8 @@ sub ranges { [shift] }
 
 sub all {
     my $self = shift;
-    croak 'lower is inlinit' if $self->lower eq '-Inf';
-    croak 'upper is infinit' if $self->upper eq 'Inf';
+    croak 'lower is infinit' if $self->lower == '-Inf';
+    croak 'upper is infinit' if $self->upper == '+Inf';
     return ($self->lower..$self->upper);
 }
 

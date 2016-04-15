@@ -10,8 +10,7 @@ sub new {
 
     my $ranges = $class->_normalize($set->ranges, $opt);
     return bless {
-        ranges    => $ranges,
-        max_depth => $opt->{max_depth} || int(log(@$ranges) / log(2)),
+        ranges => $ranges,
     } => $class;
 }
 
@@ -38,7 +37,7 @@ sub find {
     my ($self, $value) = @_;
 
     my @ranges = @{ $self->{ranges} };
-    for (0..$self->{max_depth}) {
+    while (@ranges) {
         my $point = int($#ranges / 2);
         my $range = $ranges[$point];
         if ($value < $range->lower) {

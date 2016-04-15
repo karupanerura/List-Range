@@ -13,12 +13,15 @@ use Carp qw/croak/;
 
 sub new {
     my ($class, %args) = @_;
-    return bless {
+    my $self = bless {
         lower => '-Inf',
         upper => '+Inf',
         name  => '',
         %args,
     } => $class;
+    $self->{lower} <= $self->{upper}
+        or croak "Cannot make a range by $self->{lower}..$self->{upper}";
+    return $self;
 }
 
 sub includes {

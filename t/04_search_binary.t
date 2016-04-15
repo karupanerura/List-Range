@@ -21,20 +21,12 @@ isa_ok $searcher, 'List::Range::Search::Binary';
 isnt $searcher->ranges, \@ranges, 'should not return the same range of array reference.';
 is_deeply $searcher->ranges, [$ranges[1], $ranges[0], @ranges[2..5]], 'ranges should be sorted';
 
-is +$searcher->includes(0)->name,  'A',    '0 is included in the A range';
-is +$searcher->includes(1)->name,  'B',    '1 is included in the B range';
-is +$searcher->includes(5)->name,  'B',    '5 is included in the B range';
-is +$searcher->includes(10)->name, 'B',   '10 is included in the B range';
-is +$searcher->includes(11)->name, 'C',   '11 is included in the C range';
-is +$searcher->includes(50)->name, 'F',   '50 is included in the F range';
-is +$searcher->includes(51),       undef, '51 is not included in the set';
-
-ok !$searcher->excludes(0),  '0 is not excluded in the set';
-ok !$searcher->excludes(1),  '1 is not excluded in the set';
-ok !$searcher->excludes(5),  '5 is not excluded in the set';
-ok !$searcher->excludes(10), '10 is not excluded in the set';
-ok !$searcher->excludes(11), '11 is not excluded in the set';
-ok !$searcher->excludes(50), '50 is not excluded in the set';
-ok +$searcher->excludes(51), '51 is excluded in the set';
+is +$searcher->find(0)->name,  'A',    '0 is included in the A range';
+is +$searcher->find(1)->name,  'B',    '1 is included in the B range';
+is +$searcher->find(5)->name,  'B',    '5 is included in the B range';
+is +$searcher->find(10)->name, 'B',   '10 is included in the B range';
+is +$searcher->find(11)->name, 'C',   '11 is included in the C range';
+is +$searcher->find(50)->name, 'F',   '50 is included in the F range';
+is +$searcher->find(51),       undef, '51 is not included in the set';
 
 done_testing;

@@ -47,6 +47,7 @@ is_deeply [$one_to_ten->excludes(sub { $_ + 1 }, 0..11)], [10, 11],  '1..10 is e
 is_deeply $default->ranges, [$default], 'ranges should be the array ref includes just self';
 
 is_deeply [$one_to_ten->all], [1..10], 'one to ten velues';
+is_deeply [@$one_to_ten], [1..10], 'one to ten velues (by overload)';
 
 done_testing;
 

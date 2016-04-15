@@ -6,6 +6,8 @@ use warnings;
 our $VERSION = "0.01";
 
 use Class::Accessor::Lite ro => [qw/name lower upper/];
+use overload '@{}'    => sub { [shift->all] },
+             fallback => 1;
 
 use Carp qw/croak/;
 
@@ -63,7 +65,7 @@ __END__
 
 =head1 NAME
 
-List::Range - It's new $module
+List::Range - Range processor for integers
 
 =head1 SYNOPSIS
 
@@ -84,7 +86,48 @@ List::Range - It's new $module
 
 =head1 DESCRIPTION
 
-List::Range is ...
+List::Range is range object of integers. This object likes C<0..10>.
+
+=head1 METHODS
+
+=head2 List::Range->new(%args)
+
+Create a new List::Range object.
+
+=head3 ARGUMENTS
+
+=over 4
+
+=item name
+
+Name of the range. Defaults C<"">.
+
+=item lower
+
+Lower limit of the range. Defaults C<-Inf>.
+
+=item upper
+
+Upper limit of the range. Defaults C<+Inf>.
+
+=back
+
+=head2 $range->includes(@values)
+
+Returns the values that is included in the range.
+
+=head2 $range->excludes(@values)
+
+Returns the values that is not included in the range.
+
+=head2 $range->all
+
+Returns all values in the range. (likes C<$lower..$upper>)
+C<@$range> is alias of this.
+
+=head1 SEE ALSO
+
+L<Number::Range> L<Range::Object> L<Parse::Range>
 
 =head1 LICENSE
 

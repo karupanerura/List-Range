@@ -37,7 +37,7 @@ List::Range::Set - Set of the range
     use List::Range;
     use List::Range::Set;
 
-    my $set = List::Range->new('MySet' => [
+    my $set = List::Range::Set->new('MySet' => [
         List::Range->new(name => "A",              upper =>  0),
         List::Range->new(name => "B", lower =>  1, upper => 10),
         List::Range->new(name => "C", lower => 11, upper => 20),
@@ -55,11 +55,22 @@ List::Range::Set - Set of the range
 
 =head1 DESCRIPTION
 
-TODO
+List::Range::Set provides a set of range.
+And a List::Range::Set object is a List::Range object.
+
+=head1 METHODS
+
+=head2 List::Range::Set->new($name, \@ranges)
+
+Create a new List::Range::Set object.
+
+=head2 $set->ranges
+
+Returns the ranges of the set.
 
 =head1 SEE ALSO
 
-L<perl>
+L<List::Range>
 
 =head1 LICENSE
 
@@ -73,3 +84,4 @@ it under the same terms as Perl itself.
 karupanerura E<lt>karupa@cpan.orgE<gt>
 
 =cut
+

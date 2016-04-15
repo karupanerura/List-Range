@@ -84,4 +84,3 @@ it under the same terms as Perl itself.
 karupanerura E<lt>karupa@cpan.orgE<gt>
 
 =cut
-

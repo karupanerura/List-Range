@@ -7,6 +7,9 @@ use parent qw/List::Range/;
 
 use Class::Accessor::Lite ro => [qw/ranges/];
 
+use List::Range::Search::Liner;
+use List::Range::Search::Binary;
+
 sub new {
     my ($class, $name, $ranges) = @_;
     my ($lower, $upper) = ('-Inf', '+Inf');
@@ -18,8 +21,6 @@ sub new {
     $self->{ranges} = $ranges;
     return $self;
 }
-
-
 
 1;
 __END__

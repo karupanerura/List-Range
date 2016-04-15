@@ -45,6 +45,9 @@ sub excludes {
     return grep { $_ < $self->{lower} || $self->{upper} < $_ } @_;
 }
 
+# for duck typing
+sub ranges { [shift] }
+
 sub all {
     my $self = shift;
     croak 'lower is inlinit' if $self->lower eq '-Inf';

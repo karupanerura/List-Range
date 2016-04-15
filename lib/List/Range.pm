@@ -3,7 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 use Class::Accessor::Lite ro => [qw/name lower upper/];
 use overload '@{}'    => sub { [shift->all] },

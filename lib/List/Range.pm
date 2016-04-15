@@ -11,11 +11,12 @@ use Carp qw/croak/;
 
 sub new {
     my ($class, %args) = @_;
-    $args{lower} = '-Inf' unless exists $args{lower};
-    $args{upper} = '+Inf' unless exists $args{upper};
-    $args{name}  = ''     unless exists $args{name};
-    die "Invalid arguments" if keys %args != 3;
-    return bless \%args => $class;
+    return bless {
+        lower => '-Inf',
+        upper => '+Inf',
+        name  => '',
+        %args,
+    } => $class;
 }
 
 sub includes {

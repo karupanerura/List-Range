@@ -39,13 +39,13 @@ sub includes {
 
     my @ranges = @{ $self->{ranges} };
     for (0..$self->{max_depth}) {
-        my $point = $#ranges / 2;
+        my $point = int($#ranges / 2);
         my $range = $ranges[$point];
         if ($value < $range->lower) {
             splice @ranges, $point;
         }
         elsif ($value > $range->upper) {
-            splice @ranges, 0, $point - 1;
+            splice @ranges, 0, $point + 1;
         }
         else {
             # includes

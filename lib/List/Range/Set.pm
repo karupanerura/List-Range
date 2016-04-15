@@ -7,14 +7,13 @@ use parent qw/List::Range/;
 
 use Class::Accessor::Lite ro => [qw/ranges/];
 
-use List::Range::Search::Liner;
-use List::Range::Search::Binary;
-
 sub new {
     my ($class, $name, $ranges) = @_;
-    my ($lower, $upper) = ('-Inf', '+Inf');
+    my ($lower, $upper);
     for my $range (@$ranges) {
+        $lower = $range->lower unless defined $lower;
         $lower = $range->lower if $range->lower < $lower;
+        $upper = $range->upper unless defined $upper;
         $upper = $range->upper if $range->upper > $upper;
     }
     my $self = $class->SUPER::new(name => $name, lower => $lower, upper => $upper);

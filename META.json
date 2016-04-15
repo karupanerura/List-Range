@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Range processor for integers",
    "author" : [
       "karupanerura <karupa@cpan.org>"
    ],
@@ -42,6 +42,8 @@
       },
       "runtime" : {
          "requires" : {
+            "Class::Accessor::Lite" : "0",
+            "parent" : "0",
             "perl" : "5.008001"
          }
       },
@@ -52,6 +54,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/karupanerura/List-Range/issues"
+      },
+      "homepage" : "https://github.com/karupanerura/List-Range",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/karupanerura/List-Range.git",
+         "web" : "https://github.com/karupanerura/List-Range"
+      }
+   },
    "version" : "0.01",
    "x_authority" : "cpan:KARUPA",
    "x_serialization_backend" : "JSON::PP version 2.27300"
